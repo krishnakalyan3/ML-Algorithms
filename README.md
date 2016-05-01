@@ -2,8 +2,9 @@
 ### Table Of Contents
 * Baseline Model
 * ID3
-* Naive Bayes Classifier
+* C 4.5
 * K-Means
 * Assoication Rules
-
-[DMKM Coursework](http://www.em-dmkm.eu/)
+* Naive Bayes Classifier
+* KNN
+* Apriori 

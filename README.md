@@ -3,7 +3,7 @@ Clean minimal implementations of standard machine learning algorithms
 
 Sno | Algorithm | Comments
 --- | --- | ---
-1 | SVD |
+1 | [PCA](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/algorithms/pca.py) | SVD and Eigen
 2 | Linear Regression |
 3 | Logistic Regression |
 4 | K-NN |

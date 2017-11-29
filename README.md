@@ -1,10 +1,9 @@
 # ML Algorithms
-### Table Of Contents
-* Baseline Model
-* ID3
-* C 4.5
-* K-Means
-* Assoication Rules
-* Naive Bayes Classifier
-* KNN
-* Apriori 
+Clean minimal implementations of standard machine learning algorithms
+
+Sno | Algorithm | Comments
+--- | --- | ---
+1 | PCA |
+2 | Linear Regression
+3 | Logistic Regression
+

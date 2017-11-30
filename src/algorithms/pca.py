@@ -5,7 +5,7 @@ from scipy.linalg import svd
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from base import BaseEstimator
-import logging
+
 
 np.random.seed(1337)
 
@@ -30,6 +30,7 @@ class PCA(BaseEstimator):
         self.n_components = n_components
         self.components = None
         self.mean = None
+        self.var = None
 
     def fit(self, X):
         self._scale(X)
@@ -42,11 +43,13 @@ class PCA(BaseEstimator):
     def _scale(self, X):
         mean = np.mean(X, axis=0)
         self.mean = mean
+        self.var = np.var(X)
 
     def _decompose(self, X):
-        X -= self.mean
 
         if self.solver == 'svd':
+            X -= self.mean
+            X /= self.var
             U, s, V = svd(X)
 
         if self.solver == 'eigen':

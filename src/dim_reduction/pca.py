@@ -4,13 +4,12 @@ import numpy as np
 from scipy.linalg import svd
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-from base import BaseEstimator
 
 
 np.random.seed(1337)
 
 
-class PCA(BaseEstimator):
+class PCA():
     y_required = False
 
     def __init__(self, n_components, solver='svd'):
@@ -30,7 +29,8 @@ class PCA(BaseEstimator):
         self.n_components = n_components
         self.components = None
         self.mean = None
-        self.var = None
+        self.scale = None
+        self.var_explained = None
 
     def fit(self, X):
         self._scale(X)
@@ -41,28 +41,30 @@ class PCA(BaseEstimator):
         return np.dot(X, self.components.T)
 
     def _scale(self, X):
-        mean = np.mean(X, axis=0)
-        self.mean = mean
-        self.var = np.var(X)
+        self.mean = np.mean(X, axis=0)
+        self.scale = np.std(X, axis=0)
 
     def _decompose(self, X):
+        """
+        S: Eigen Values
+        V: Eigen Vectors
+        """
 
         if self.solver == 'svd':
             X -= self.mean
-            X /= self.var
+            X /= self.scale
             U, s, V = svd(X)
 
         if self.solver == 'eigen':
             cov_mat = np.cov(X.T)
             s, V = np.linalg.eig(cov_mat)
 
-        self._variance_explained(s)
         self.components = V[0:self.n_components]
+        self.var_explained = self._variance_explained(s)
 
     def _variance_explained(self, s):
-        s_squared = s ** 2
-        variance_ratio = s_squared / (s_squared).sum()
-        print('Explained variance ratio: %s' % (variance_ratio[0:self.n_components]))
+        variance_ratio = s / np.sum(s)
+        return variance_ratio[:self.n_components]
 
 
 if __name__ == '__main__':
@@ -72,6 +74,13 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
                                                         random_state=1111)
 
-    pca = PCA(n_components=10, solver='svd')
-    pca.fit(X_train)
+    #pca = PCA(n_components=10, solver='svd')
+    #pca.fit(X_train)
 
+    pca1 = PCA(n_components=10, solver='eigen')
+    pca1.fit(X_train)
+    print(pca1.var_explained)
+
+    pca2 = PCA(n_components=10, solver='svd')
+    pca2.fit(X_train)
+    print(pca2.var_explained)

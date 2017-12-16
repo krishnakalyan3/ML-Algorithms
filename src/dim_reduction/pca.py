@@ -4,7 +4,8 @@ import numpy as np
 from scipy.linalg import svd
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-
+from sklearn.decomposition import PCA as PCA1
+from sklearn.preprocessing import StandardScaler
 
 np.random.seed(1337)
 
@@ -30,7 +31,8 @@ class PCA():
         self.components = None
         self.mean = None
         self.scale = None
-        self.var_explained = None
+        self.s = None
+        #self.var_explained = None
 
     def fit(self, X):
         self._scale(X)
@@ -51,18 +53,23 @@ class PCA():
         """
 
         if self.solver == 'svd':
-            X -= self.mean
-            X /= self.scale
+            #X -= self.mean
+            #X /= self.scale
             U, s, V = svd(X)
 
         if self.solver == 'eigen':
+            X -= self.mean
+            X /= self.scale
             cov_mat = np.cov(X.T)
             s, V = np.linalg.eig(cov_mat)
 
-        self.components = V[0:self.n_components]
-        self.var_explained = self._variance_explained(s)
+        self.V = V[0:self.n_components]
+        self.s = s
 
-    def _variance_explained(self, s):
+
+    @property
+    def var_explained(self):
+        s = self.s
         variance_ratio = s / np.sum(s)
         return variance_ratio[:self.n_components]
 
@@ -74,13 +81,16 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
                                                         random_state=1111)
 
-    #pca = PCA(n_components=10, solver='svd')
-    #pca.fit(X_train)
-
-    pca1 = PCA(n_components=10, solver='eigen')
+    pca1 = PCA(n_components=2, solver='svd')
     pca1.fit(X_train)
     print(pca1.var_explained)
 
-    pca2 = PCA(n_components=10, solver='svd')
+    pca2 = PCA(n_components=2, solver='eigen')
     pca2.fit(X_train)
     print(pca2.var_explained)
+
+    scaler = StandardScaler()
+    X_std = scaler.fit_transform(X)
+    pca = PCA1(n_components=2)
+    pca.fit(X_std)
+    print(pca.explained_variance_ratio_)

@@ -53,9 +53,10 @@ class PCA():
         """
 
         if self.solver == 'svd':
-            #X -= self.mean
-            #X /= self.scale
-            U, s, V = svd(X)
+            X -= self.mean
+            X /= self.scale
+            cov_mat = np.cov(X.T)
+            U, s, V = svd(cov_mat)
 
         if self.solver == 'eigen':
             X -= self.mean

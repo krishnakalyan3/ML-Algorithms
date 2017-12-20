@@ -11,21 +11,19 @@ np.random.seed(1337)
 
 
 class PCA():
-    y_required = False
+    """
+    Principal component analysis (PCA) implementation.
+
+    Parameters
+    ----------
+    n_components : Integer
+    Number of Components
+
+    solver : String
+    Optional arguments {'svd', 'eigen'}
+    """
 
     def __init__(self, n_components, solver='svd'):
-        """
-        Principal component analysis (PCA) implementation.
-
-        Parameters
-        ----------
-        n_components : Integer
-        Number of Components
-
-        solver : String
-        Optional arguments {'svd', 'eigen'}
-        """
-
         self.solver = solver
         self.n_components = n_components
         self.components = None
@@ -52,15 +50,15 @@ class PCA():
         V: Eigen Vectors
         """
 
+        X -= self.mean
+        X /= self.scale
+
         if self.solver == 'svd':
-            X -= self.mean
-            X /= self.scale
             cov_mat = np.cov(X.T)
             U, s, V = svd(cov_mat)
 
         if self.solver == 'eigen':
-            X -= self.mean
-            X /= self.scale
+
             cov_mat = np.cov(X.T)
             s, V = np.linalg.eig(cov_mat)
 
@@ -84,14 +82,14 @@ if __name__ == '__main__':
 
     pca1 = PCA(n_components=2, solver='svd')
     pca1.fit(X_train)
-    print(pca1.var_explained)
+    print('SVD\t{}'.format(pca1.var_explained))
 
     pca2 = PCA(n_components=2, solver='eigen')
     pca2.fit(X_train)
-    print(pca2.var_explained)
+    print('Eigen\t{}'.format(pca2.var_explained))
 
     scaler = StandardScaler()
     X_std = scaler.fit_transform(X)
     pca = PCA1(n_components=2)
     pca.fit(X_std)
-    print(pca.explained_variance_ratio_)
+    print('Sklearn\t{}'.format(pca.explained_variance_ratio_))

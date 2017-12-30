@@ -67,7 +67,7 @@ if __name__ == '__main__':
                       random_state=0, cluster_std=0.6)
 
     # Plot Data
-    plot1(X)
+    # plot1(X)
 
     # K-Means Clustering
     kmeans = KMeans(k=3, max_iters=100)
@@ -78,4 +78,4 @@ if __name__ == '__main__':
     kmeans_sk = KMeansSK(n_clusters=3, max_iter=100, init='random')
     labels = kmeans_sk.fit_predict(X)
     plot2(X, labels)
-    # print(kmeans_sk.inertia_)
+    #print(kmeans_sk.inertia_)

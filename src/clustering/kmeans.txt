@@ -1,0 +1,11 @@
+# Pseudocode KMeans (Lloyd's algorithm)
+
+## Initialize
+    # Choose k (Number of Clusters); 3
+    # Choose num iterations; 100
+## Choose random indexes from the data based on k
+## For loop number of iteartions:
+    # Euclidean distance between the cluster centers and the data points
+    # Assign the data to the cluster with minimum euclidean distance
+    # Calculate the new means to centroids
+    # Assign the new means as the new cluster centers

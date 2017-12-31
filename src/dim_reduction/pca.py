@@ -52,14 +52,12 @@ class PCA():
 
         X -= self.mean
         X /= self.scale
+        cov_mat = np.cov(X.T)
 
         if self.solver == 'svd':
-            cov_mat = np.cov(X.T)
             U, s, V = svd(cov_mat)
 
         if self.solver == 'eigen':
-
-            cov_mat = np.cov(X.T)
             s, V = np.linalg.eig(cov_mat)
 
         self.V = V[0:self.n_components]
@@ -91,5 +89,5 @@ if __name__ == '__main__':
     scaler = StandardScaler()
     X_std = scaler.fit_transform(X)
     pca = PCA1(n_components=2)
-    pca.fit(X_std)
+    pca.fit(X_train)
     print('Sklearn\t{}'.format(pca.explained_variance_ratio_))

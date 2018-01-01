@@ -4,10 +4,9 @@ import numpy as np
 from scipy.spatial.distance import euclidean
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-from base import BaseEstimator
 
 
-class KNNClassifier(BaseEstimator):
+class KNNClassifier():
 
     def __init__(self, k=5, dist_func=euclidean):
         """
@@ -23,4 +22,11 @@ class KNNClassifier(BaseEstimator):
         """
         self.k = k
         self.dist_func = dist_func
+
+
+if __name__ == '__main__':
+    X, y = make_classification(n_samples=500, n_features=5, n_informative=5,
+                               n_redundant=0, n_repeated=0, n_classes=3,
+                               random_state=1111, class_sep=1.5, )
+
 

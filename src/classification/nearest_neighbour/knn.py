@@ -41,9 +41,10 @@ class KNNClassifier():
     def fit_predict(self, X, y):
         y_hat = []
         for x in X:
-            distances = self.euclidean_distance(X, x)
-            data = sorted((distance, target) for distance, target in zip(distances, y))
-            top_n = data[:self.n_neighbors]
+            if self.p == 2:
+                distances = self.euclidean_distance(X, x)
+            neighbors_distance = sorted((distance, target) for distance, target in zip(distances, y))
+            top_n = neighbors_distance[:self.n_neighbors]
             neighbors_targets = self.most_common([y for _, y in top_n])
             y_hat.append(neighbors_targets)
         return y_hat
@@ -54,11 +55,13 @@ if __name__ == '__main__':
 
     clf1 = KNNClassifier()
     y_hat = clf1.fit_predict(X, y)
+    print(y_hat)
     train_acc = accuracy_score(y, y_hat)
     print(train_acc)
 
     clf = KNeighborsClassifier(n_neighbors=3, p=2)
     clf.fit(X, y)
     y_hat = clf.predict(X)
+
     train_acc = accuracy_score(y, y_hat)
     print(train_acc)

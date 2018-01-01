@@ -1,0 +1,9 @@
+# KNN
+# Compute distance for a data point with the input data
+# sort based on distance
+# extract target based on first take N rows
+# return the most common one
+# Continue for all data points
+
+[1] https://github.com/rushter/MLAlgorithms/blob/master/mla/knn.py
+[2] https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm

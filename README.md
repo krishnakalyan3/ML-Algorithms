@@ -29,3 +29,6 @@ Sno | Algorithm | Video | Comments
 3 | Random Forest |
 
 This repository has been inspired by [MLAlgorithms](https://github.com/rushter/MLAlgorithms)
+
+
+# Adapted from https://wiseodd.github.io/techblog/2016/06/22/nn-optimization/s

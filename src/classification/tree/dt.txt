@@ -1,0 +1,5 @@
+# Decision Tree
+- Decide which feature to split from?
+- Depth of a tree
+- Decide a threshold to prevent more splitting / pruning
+-

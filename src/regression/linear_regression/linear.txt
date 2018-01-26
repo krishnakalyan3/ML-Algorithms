@@ -1,0 +1,1 @@
+# https://stats.stackexchange.xwcom/questions/23128/solving-for-regression-parameters-in-closed-form-vs-gradient-descent

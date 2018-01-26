@@ -25,13 +25,13 @@ class LogisticRgression():
         self.sgd(X,y)
 
     def classify(self, y):
-        if y > 0.5:
+        if y >= 0.5:
             return 1
         else:
             return 0
 
     def predict(self, X):
-        return np.array([self.classify(i) for i in  X.dot(self.weight)])
+        return np.array([self.classify(i) for i in X.dot(self.weight)])
 
 
 if __name__ == '__main__':

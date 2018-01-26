@@ -30,7 +30,6 @@ class PCA():
         self.mean = None
         self.scale = None
         self.s = None
-        #self.var_explained = None
 
     def fit(self, X):
         self._scale(X)
@@ -52,7 +51,7 @@ class PCA():
 
         X -= self.mean
         X /= self.scale
-        cov_mat = np.cov(X.T)
+        cov_mat = np.cov(X, rowvar=False)
 
         if self.solver == 'svd':
             U, s, V = svd(cov_mat)
@@ -62,7 +61,6 @@ class PCA():
 
         self.V = V[0:self.n_components]
         self.s = s
-
 
     @property
     def var_explained(self):

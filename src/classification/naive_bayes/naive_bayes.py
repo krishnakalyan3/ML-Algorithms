@@ -48,5 +48,3 @@ if __name__ == '__main__':
 
     clf = NBClassifier()
     clf.fit(X, y)
-
-

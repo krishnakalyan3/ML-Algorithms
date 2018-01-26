@@ -13,9 +13,8 @@ SNo | Algorithm | Video | Comments
 Sno | Algorithm | Video | Comments
 --- | --- | --- | ---
 1 | [K-Means](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/clustering/kmeans.py) |
-2 | Decision Trees | [UWaterLoo](https://www.youtube.com/watch?v=JG3MPLlyOJg&index=15&list=PLehuLRPyt1Hy-4ObWBK4Ab0xk97s6imfC)
-3 | Naive Bayes |
-4 | [KNN](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/nearest_neighbour/knn.py) | [UWaterLoo](https://www.youtube.com/watch?v=JG3MPLlyOJg&index=15&list=PLehuLRPyt1Hy-4ObWBK4Ab0xk97s6imfC)
+2 | Decision Trees |
+4 | [KNN](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/nearest_neighbour/knn.py) |
 5 | [Linear Regression](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/regression/linear_regression/linear_regresison.py) |
 6 | [Logistic Regression](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/logit/logistic_regression.py) |
 

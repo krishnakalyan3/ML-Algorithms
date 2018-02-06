@@ -30,4 +30,4 @@ Sno | Algorithm | Video | Comments
 This repository has been inspired by [MLAlgorithms](https://github.com/rushter/MLAlgorithms)
 
 
-# Adapted from https://wiseodd.github.io/techblog/2016/06/22/nn-optimization/s
+Adapted from https://wiseodd.github.io/techblog/2016/06/22/nn-optimization/

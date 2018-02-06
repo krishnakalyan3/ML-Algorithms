@@ -38,6 +38,7 @@ class KMeans():
         for i in range(self.max_iter):
             distances_to_centroids = build_distance(X, centroids)
             cluster_assignment = np.argmin(distances_to_centroids, axis=1)
+
             new_centroids = np.array([X[cluster_assignment == i].mean(axis=0) for i in range(self.k)])
 
             if np.all(cluster_assignment == self.clusters):
@@ -56,6 +57,7 @@ class KMeans():
             cluster_data = X[self.clusters == i]
             cluster_mean = np.mean(cluster_data, axis=0)
             sse = np.sum(np.square(cluster_data - cluster_mean))
+
             t_sse.append(sse)
 
         return np.sum(t_sse)
@@ -63,19 +65,23 @@ class KMeans():
 
 if __name__ == '__main__':
     # Generate Data
-    X, y = make_blobs(n_samples=300, centers=3,
+    X, y = make_blobs(n_samples=300, centers=3, n_features=2,
                       random_state=0, cluster_std=0.6)
-
     # Plot Data
-    # plot1(X)
+    #plot1(X)
 
     # K-Means Clustering
     kmeans = KMeans(k=3, max_iters=100)
+
     labels = kmeans.fit_predict(X)
     print(kmeans.inertia_)
     #plot2(X, labels)
 
     kmeans_sk = KMeansSK(n_clusters=3, max_iter=100, init='random')
     labels = kmeans_sk.fit_predict(X)
+
     plot2(X, labels)
-    #print(kmeans_sk.inertia_)
+    print(kmeans_sk.inertia_)
+
+
+# min Ck |Xi - Ck|

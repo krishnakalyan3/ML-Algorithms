@@ -16,6 +16,8 @@ def euclidean_distance(X, center):
 
 
 def build_distance(X, centers):
+    # n * k
+
     k = centers.shape[0]
     dist_matrix = np.zeros((X.shape[0], k))
     for i in range(k):

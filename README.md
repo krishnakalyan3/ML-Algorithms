@@ -16,16 +16,18 @@ Sno | Algorithm | Video | Comments
 2 | Decision Trees |
 4 | [KNN](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/nearest_neighbour/knn.py) |
 5 | [Linear Regression](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/regression/linear_regression/linear_regresison.py) |
-6 | [Logistic Regression](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/logit/logistic_regression.py) |
-
+6 | Lasso  Regression
+7 | [Logistic Regression](https://github.com/krishnakalyan3/ML-Algorithms/blob/master/src/classification/logit/logistic_regression.py) |
+8 | SVM |
+9 | Neural Networks |
 
 ### Advanced Algorithms
 
 Sno | Algorithm | Video | Comments
 --- | --- | --- | ---
-1 | SVM |
-2 | Neural Networks |
-3 | Random Forest |
+1 | Random Forest |
+2 | XGBoost |
+3 | RNN
 
 This repository has been inspired by [MLAlgorithms](https://github.com/rushter/MLAlgorithms)
 
